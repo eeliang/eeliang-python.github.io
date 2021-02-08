@@ -22,21 +22,23 @@ Next, [pyend-virtualenv](https://github.com/pyenv/pyenv-virtualenv). A plugin th
 
 ## How to use **pyenv**
 
-
-
 ### Download and install **pyenv**
 
 ```
-python -m pip install pyenv
+brew update
+brew install pyenv
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 ```
 
-Install **pyenv** as a python module.
+Install **pyenv** as a command-line tool. For MacOS users, Brew is a convenient package manager.
 
+Next, add **pyenv** to your `PATH`. The specific setup will be different based on your OS and shell.
 
 ### Setting up **pyenv** versions
 
-
-```shell
+```
 pyenv install --list | grep 3.8
 pyenv install 3.8.5
 pyenv version               # 3.7.6 (set by ~/.pyenv/version)
@@ -63,11 +65,9 @@ Check the python version that is designated as the current version.
 
 Set the default version of python on your machine. It is recommended to use the last known stable version of python for this.
 
-
-
 ### Setting up your workspace with **pyenv** versions
 
-```zsh
+```
 cd project-dir
 pyenv local 2.7.16
 cat .python-version       # 2.7.16
@@ -78,22 +78,48 @@ When working in specific projects (i.e. specific directories), you can define th
 
 ### Automatically change to directory versions
 
-```zsh
+```
 eval '$(pyenv init -)' >> .zshrc
 ```
 
 Add this code snippet in your shell startup files, pyenv will change to the local version whenever you move to a directory with a `.python-version` definition.
 
-``eval '$(pyenv init -)' >> .zshrc``
+## How to use **pyenv-virtualenv**
 
+### Download and install **pyenv**
+
+```
+brew install pyenv-virtualenv
+```
+
+Install **pyenv-virtualenv** as a command-line tool. For MacOS users, Brew is a convenient package manager.
+
+### Setting up virtual environments
+
+```
+pyenv virtualenv 3.7.6 websiteproject
+pyenv local websiteproject
+pyenv activate websiteproject           # prompt= ( websiteproject ) $
+pyenv deactivate                        # prompt= $
+```
+
+Define a virtual environment with the following command. This will create a directory to contain all the configuration for a _user-defined_ Python version with only the default packages. Packages installed in this directory will not affect or be affected by other package versions located elsewhere on your machine.
+
+### Automatically switch to virtual environments
+
+```
+eval '$(pyenv virtualenv-init -)' >> .zshrc
+```
+
+If you add this code snippet in your shell startup files, pyenv-virtualenv will activate the virtual environment automatically whenever you move to a directory with a `.python-version` definition.
 
 ## FAQ
 
-Some errors and solutions that i encountered along the way.
+Some errors and solutions that i encountered along the way. For MacOS users, Brew is a convenient package manager.
 
 ### `pyenv: python: command not found`
 
-```zsh
+```
 whence python               # usr/bin/python
 ln -s python3 python
 whence python               # User/<username>/.pyenv/shims/python

@@ -13,6 +13,8 @@ toc_footers:
 
 includes:
   - environments
+  - list-comprehension
+  - control-flow
 
 search: true
 
@@ -21,9 +23,19 @@ code_clipboard: true
 
 # Introduction
 
+Hello reader!
+
+Welcome to my little store of python learning. This is where i store my go-to content and i refer to this page often.
+
+You will also find little tips and tricks to make coding in python easier.
+
+If you enjoy browsing content from a newbie-peer, you will find this documentation helpful.
+
+### Best practices for finding solutions
+
 Learn to refer to the [Python Documentation](https://docs.python.org/3/) for basic knowledge.
 
 For a bite-size walkthrough of concepts, I recommended [programiz](https://www.programiz.com/python-programming).
 
-Lastly, you can seek help from online forums ([Reddit](https://www.reddit.com/r/learnpython/), [Stackoverflow](https://stackoverflow.com/questions/tagged/python), etc. ).
+Lastly, do it yourself! As you are going through the documentation, open up a terminal or python IDE and write the code snippets. Nothing beats learning than trying it yourself.
 
